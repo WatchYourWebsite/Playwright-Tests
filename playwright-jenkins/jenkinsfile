@@ -1,0 +1,16 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Run tests in Docker') {
+            steps {
+                script {
+                    docker.image('mcr.microsoft.com/playwright:v1.45.1-jammy').inside('-u root') {
+                        sh 'npm ci'
+                        sh 'npx playwright test'
+                    }
+                }
+            }
+        }
+    }
+}
