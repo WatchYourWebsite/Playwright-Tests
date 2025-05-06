@@ -1,16 +1,24 @@
 pipeline {
     agent any
-
+    tools {
+        nodejs '18.19.1' // Use the name you provided in the Global Tool Configuration
+    }
     stages {
-        stage('Run tests in Docker') {
+        stage('Install dependencies') {
             steps {
-                script {
-                    docker.image('mcr.microsoft.com/playwright:v1.45.1-jammy').inside('-u root') {
-                        sh 'npm ci'
-                        sh 'npx playwright test'
-                    }
-                }
+                sh 'npm install'
             }
+        }
+        stage('Run Playwright Tests') {
+            steps {
+                sh 'npx playwright test'
+            }
+        }
+    }
+    post {
+        always {
+            archiveArtifacts artifacts: '**/test-results/*.*', allowEmptyArchive: true
+            junit 'test-results/*.xml'
         }
     }
 }
