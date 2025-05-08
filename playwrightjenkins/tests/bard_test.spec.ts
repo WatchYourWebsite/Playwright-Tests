@@ -1,5 +1,5 @@
 // Correct:
-const { test, expect } = require('@playwright/test');
+const { test, expect, describe } = require('@playwright/test');
 
 describe('My Component Tests', () => {
   test('should render correctly', async ({ page }) => {
