@@ -1,5 +1,6 @@
+import { test, expect, describe } from '@playwright/test';
 // Correct:
-const { test, expect, describe } = require('@playwright/test');
+//const { test, expect, describe } = require('@playwright/test');
 
 describe('My Component Tests', () => {
   test('should render correctly', async ({ page }) => {
