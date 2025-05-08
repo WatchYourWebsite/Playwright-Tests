@@ -2,9 +2,7 @@
   "name": "playwright-jenkins",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
-    "testCase": "npx playwright test tests/example.spec.ts"
-  },
+  "scripts": {},
   "keywords": [],
   "author": "",
   "license": "ISC",
